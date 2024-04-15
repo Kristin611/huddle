@@ -1,3 +1,18 @@
-const User = require('./user')
+const User = require('./user');
+const Huddle = require('./Huddle');
 
-module.exports = User;
+//Huddle belongsTo User
+Huddle.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+})
+
+//User has many Huddles
+User.hasMany(Huddle, {
+    foreignKey: 'user_id'
+})
+
+module.exports = {
+    User,
+    Huddle
+};

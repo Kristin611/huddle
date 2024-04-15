@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
   }
 
+  //sync sequelize models to the database, then turn on the server
 connection.sync({
     force: false
 }).then(() => {
