@@ -1,14 +1,33 @@
 const router = require('express').Router();
 const User = require('../../models');
 
+//the '/api/users' endpoint
+
+//GET all users
 router.get('/', async (req, res) => {
     try {
         const allUsers = await User.findAll()
+        console.log(allUsers)
         res.status(200).json(allUsers)
     } catch (error) {
-        console.error(error)
-        res.status(500).json(error)
+        console.error('Error retrieving users:', error)
+        res.status(500).json({error: 'Internal server error'})
     }
+})
+
+//Get a user
+router.get('/:id', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id);
+
+    if (!userData) {
+      res.status(404).json({ message: 'No user with this id!'});
+      return;
+    }
+    res.status(200).json(userData)
+  } catch (error) {
+    res.status(500).json(error);
+  }
 })
 
 router.post('/', async (req, res) => {

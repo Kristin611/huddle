@@ -12,6 +12,8 @@ app.use(routes)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
+  } else {
+    app.use(express.static(path.join(__dirname, '../client/public')))
   }
 
   //sync sequelize models to the database, then turn on the server
