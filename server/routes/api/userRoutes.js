@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../../models');
+const User = require('../../models/user');
 
 //the '/api/users' endpoint
 
@@ -7,7 +7,7 @@ const User = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const allUsers = await User.findAll()
-        console.log(allUsers)
+        // console.log(allUsers)
         res.status(200).json(allUsers)
     } catch (error) {
         console.error('Error retrieving users:', error)
@@ -30,6 +30,7 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+//create user
 router.post('/', async (req, res) => {
     try {
       const userData = await User.create(req.body);
