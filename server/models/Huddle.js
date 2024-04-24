@@ -11,11 +11,15 @@ const { Model, DataTypes } = require('sequelize');
             primaryKey: true,
             autoIncrement: true,
         },
-        author: {
-            type: DataTypes.STRING,
+        huddleTitle: {
+            type: DataTypes.TEXT,
             allowNull: false,
-
-
+            validate: {
+                len: {
+                    args: [1, 10],
+                    msg: "Text must be between 1 and 10 characters in length."
+                }
+            }
         },
         huddleText: {
             type: DataTypes.TEXT,
@@ -26,6 +30,12 @@ const { Model, DataTypes } = require('sequelize');
                     msg: "Text must be between 1 and 300 characters in length."
                 }
             }
+        },
+        author: {
+            type: DataTypes.STRING,
+            allowNull: false,
+
+
         },
         huddle_id: {
             type: DataTypes.INTEGER,
