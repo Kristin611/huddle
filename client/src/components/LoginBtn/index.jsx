@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import LoginModal from '../LoginModal' 
 
-export const LoginBtn = () => {
+export const LoginButton = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLoginClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
   return (
     <>
-        <button></button>
+      <button onClick={handleLoginClick}>Login</button>
+      <LoginModal isOpen={isModalOpen} onClose={handleCloseModal}/>
     </>
   )
 }
+
+export default LoginButton

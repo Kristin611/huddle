@@ -1,8 +1,18 @@
 .container {
     background-color: rgb(115, 147, 179);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5rem;
+    padding-left: 3rem;
+    
 }
 
 .logoImage {
     max-width: 10%;
     height: auto;
+}
+
+.spacer {
+    flex-grow: 1;
 }
