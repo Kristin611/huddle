@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import './LoginModal.css'
 
 const LoginModal = ({ isOpen, onClose }) => {
     const [username, setUsername] = useState('');
@@ -24,9 +25,10 @@ const LoginModal = ({ isOpen, onClose }) => {
 
   return (
     <>
-        <Modal isOpen={isOpen} onRequestClose={onClose}>
-            <h2>Login</h2>
+        <Modal className='modal' isOpen={isOpen} onRequestClose={onClose}>
+            {/* <h2>Enter Your Credentials:</h2> */}
             <form onSubmit={handleSubmit}>
+                <h3>Username</h3>
                 <input
                     value={username}
                     name="username"
@@ -34,6 +36,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                     type='text'
                     placeholder='Username'
                 />
+                <h3>Password</h3>
                 <input 
                     value={password}
                     name='password'
@@ -41,8 +44,8 @@ const LoginModal = ({ isOpen, onClose }) => {
                     type='text'
                     placeholder='Password'
                 />
-                <button type='submit'>
-                    Submit
+                <button className='loginBtn' type='submit'>
+                    Log in
                 </button>
                 
             </form>
