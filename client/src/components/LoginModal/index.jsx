@@ -27,14 +27,14 @@ const LoginModal = ({ isOpen, onClose }) => {
     <>
         <Modal className='modal' isOpen={isOpen} onRequestClose={onClose}>
             {/* <h2>Enter Your Credentials:</h2> */}
-            <form onSubmit={handleSubmit}>
+            <form className='loginForm' onSubmit={handleSubmit}>
                 <h3>Username</h3>
                 <input
                     value={username}
                     name="username"
                     onChange={handleUsernameChange}
                     type='text'
-                    placeholder='Username'
+                    className='loginInput'
                 />
                 <h3>Password</h3>
                 <input 
@@ -42,7 +42,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                     name='password'
                     onChange={handlePasswordChange}
                     type='text'
-                    placeholder='Password'
+                    className='loginInput'
                 />
                 <button className='loginBtn' type='submit'>
                     Log in

@@ -8,14 +8,14 @@
     
 }
 
-form {
+.loginForm {
     display: flex;
     flex-direction: column;
     
    
 }
 
-input, button {
+.loginInput {
     padding: 4px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -28,6 +28,7 @@ input, button {
     color: whitesmoke;
     border: none;
     border-radius: 5px;
+    padding: 4px;
     cursor: pointer;
 }
 
