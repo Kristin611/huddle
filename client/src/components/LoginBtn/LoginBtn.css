@@ -1,0 +1,15 @@
+.loginButton {
+    background-color: rgb(115, 147, 179);
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.loginButton:hover {
+    /* border-style: solid; */
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(139, 160, 182);
+}
