@@ -2,6 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { Header } from './components/Header/index'
+import { Outlet } from 'react-router-dom';
+import Hero from './components/Hero/index';
+import Navbar from './components/NavBar/index';
 
 // import './App.css'
 
@@ -11,6 +14,12 @@ function App() {
   return (
     <>
       <Header/>
+      <Navbar />
+      {/* <Hero /> */}
+      <main>
+        <Outlet />
+      </main>
+
     
       
       

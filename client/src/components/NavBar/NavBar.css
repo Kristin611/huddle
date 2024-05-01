@@ -1,0 +1,14 @@
+.nav-container {
+   
+    background-color: rgb(115, 147, 179);
+    padding: 1%;
+    border: 1px solid #211b1b;
+    border-radius: 3px;
+    
+ 
+}
+
+.navList {
+    list-style: none;
+    font-size: 1.3rem;
+}
