@@ -8,7 +8,8 @@ const Hero = () => {
      <section className='hero-container'>
         <img className='heroImg' src={heroImage} alt="group of penguins" />
         <div className='text-overlay'>
-            <h2>Huddle</h2>
+            <h1 className='huddleTitle'>Huddle</h1>
+            <h2 className='huddleText'>A place where students can create, share, and inspire.</h2>
         </div>
      </section>
     </>

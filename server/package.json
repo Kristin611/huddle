@@ -16,7 +16,8 @@
     "sequelize": "6.37.2",
     "bcrypt":"5.1.1",
     "express-session":"1.18.0",
-    "dotenv":"16.4.5"
+    "dotenv":"16.4.5",
+    "uuid": "^9.0.1"
 
   }
   
