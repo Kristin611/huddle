@@ -4,6 +4,8 @@
 
 .hero-container {
     position: relative;
+    border: 1px solid #211b1b;
+    border-radius: 3px;
     
 }
 
