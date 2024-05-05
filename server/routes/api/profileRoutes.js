@@ -3,12 +3,20 @@ const { User, Huddle } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //get user profile page
-router.get('/profile', async (req, res) => {
+router.get('/profile/:id', async (req, res) => {
     try {
-        const userData = await User.findByPk({
+
+        const userId = req.user.id;  
+
+        const userData = await User.findOne({
+            where: {id: userId},
             attributes: {exclude: ['password']},
             include: [{model: Huddle}],
         });
+
+        if (!userData) {
+            return res.status(404).json({error: 'User not found'})
+        }
 
         const user = userData.get({plain: true})
 
@@ -17,6 +25,7 @@ router.get('/profile', async (req, res) => {
             logged_in: true
         });
     } catch (error) {
-        res.status(505).json(error)
+        console.error('Error fetching user profile:', error);
+        res.status(500).json({error: 'Internal Server Error'})
     }
 })

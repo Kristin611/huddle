@@ -33,7 +33,10 @@ router.get('/:id', async (req, res) => {
 //create user
 router.post('/', async (req, res) => {
     try {
-      const userData = await User.create(req.body);
+      const userData = await User.create({
+        username: req.body.username,
+        password: req.body.password
+      });
     //   req.session.save(() => {
     //     req.session.user_id = userData.id;
     //     req.session.username = userData.username;
@@ -48,9 +51,14 @@ router.post('/', async (req, res) => {
 
   router.post('/login', async (req, res) => {
   try {
+    const { username, password } = req.body; 
+
+    console.log('Request body:', req.body); //log the request body
+
     const userData = await User.findOne({
       where: { username: req.body.username },
     });
+    console.log('user data:', userData) //log retreived user data
     if (!userData) {
       res
         .status(400)
@@ -61,8 +69,7 @@ router.post('/', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect username or password, please try again' });
-      return;
+        .json({ message: 'Invalid password, please try again' });
     }
     // req.session.save(() => {
     //   req.session.user_id = userData.id;
@@ -73,12 +80,16 @@ router.post('/', async (req, res) => {
     //     message: 'You are now logged in!',
     //   });
     // });
-          res.status(200).json({
-        userData,
+        return res.status(200).json({
+        user: {
+          id: userData.id,
+          username: userData.username
+        },
         message: 'You are now logged in!',
       });
   } catch (err) {
-    res.status(400).json(err);
+    console.error('Login error:', err)
+    res.status(500).json({message: 'Internal server error'});
   }
 });
 
