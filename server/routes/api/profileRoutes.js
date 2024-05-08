@@ -3,7 +3,7 @@ const { User, Huddle } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //get user profile page
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile', async (req, res) => {
     try {
 
         const userId = req.user.id;  

@@ -20,12 +20,15 @@ const LoginModal = ({ isOpen, onClose }) => {
         console.log('Username:', username);
         console.log('Password:', password)
 
+        setUsername('');
+        setPassword('');
+
         onClose();
     }
 
   return (
     <>
-        <Modal className='modal' isOpen={isOpen} onRequestClose={onClose}>
+        <Modal className='modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='My Modal'>
             {/* <h2>Enter Your Credentials:</h2> */}
             <form className='loginForm' onSubmit={handleSubmit}>
                 <h3>Username</h3>

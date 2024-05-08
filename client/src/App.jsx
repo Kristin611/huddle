@@ -1,15 +1,22 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import { Header } from './components/Header/index'
+import React, { useEffect } from 'react';
+import { Header } from './components/Header/index';
 import { Outlet } from 'react-router-dom';
 import Hero from './components/Hero/index';
 import Navbar from './components/NavBar/index';
+import Modal from 'react-modal';
 
 // import './App.css'
 
 function App() {
   // const [count, setCount] = useState(0)
+
+  //this useEffect is used for screen readers for accessibility purposes: Modal.setAppElement('#root') tells react-modal to treat the #root element as the main content of your application that should be hidden when a modal is open.
+  useEffect(() => {
+    Modal.setAppElement('main')
+  }, []);
 
   return (
     <>

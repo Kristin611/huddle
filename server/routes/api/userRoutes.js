@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
     }
   });
 
-  router.post('/login', async (req, res) => {
+  router.post('/users/login', async (req, res) => {
   try {
     const { username, password } = req.body; 
 
@@ -71,12 +71,16 @@ router.post('/', async (req, res) => {
         .status(400)
         .json({ message: 'Invalid password, please try again' });
     }
-    // req.session.save(() => {
+    //  req.session.save(() => {
     //   req.session.user_id = userData.id;
     //   req.session.username = userData.username;
     //   req.session.logged_in = true;
-    //   res.status(200).json({
-    //     userData,
+     
+    //   return res.status(200).json({
+    //     user: {
+    //       id: userData.id,
+    //       username: userData.username 
+    //       },
     //     message: 'You are now logged in!',
     //   });
     // });
