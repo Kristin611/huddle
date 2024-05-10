@@ -84,13 +84,19 @@ router.post('/', async (req, res) => {
     //     message: 'You are now logged in!',
     //   });
     // });
-        return res.status(200).json({
+
+      res.setHeader('Content-Type:', 'application/json')
+
+        res.status(200).json({
         user: {
           id: userData.id,
           username: userData.username
         },
         message: 'You are now logged in!',
       });
+
+      console.log('response headers:', res.getHeaders())
+
   } catch (err) {
     console.error('Login error:', err)
     res.status(500).json({message: 'Internal server error'});

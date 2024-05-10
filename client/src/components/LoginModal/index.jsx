@@ -28,7 +28,7 @@ const LoginModal = ({ isOpen, onClose }) => {
 
   return (
     <>
-        <Modal className='modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='My Modal'>
+        <Modal className='modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='Login Modal'>
             {/* <h2>Enter Your Credentials:</h2> */}
             <form className='loginForm' onSubmit={handleSubmit}>
                 <h3>Username</h3>
