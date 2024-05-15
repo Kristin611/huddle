@@ -19,6 +19,7 @@ const LoginModal = ({ isOpen, onClose }) => {
 
         console.log('Username:', username);
         console.log('Password:', password)
+        console.log(() => {'Button clicked'})
 
         setUsername('');
         setPassword('');
@@ -30,7 +31,7 @@ const LoginModal = ({ isOpen, onClose }) => {
     <>
         <Modal className='modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='Login Modal'>
             {/* <h2>Enter Your Credentials:</h2> */}
-            <form className='loginForm' onSubmit={handleSubmit}>
+            <form className='loginForm'>
                 <h3>Username</h3>
                 <input
                     value={username}
@@ -47,7 +48,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                     type='text'
                     className='loginInput'
                 />
-                <button className='loginBtn' type='submit'>
+                <button className='loginBtn' type='submit' onClick={handleSubmit}>
                     Log in
                 </button>
                 

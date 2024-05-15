@@ -49,14 +49,14 @@ router.post('/', async (req, res) => {
     }
   });
 
-  router.post('/users/login', async (req, res) => {
+  router.post('/login', async (req, res) => {
   try {
-    const { username, password } = req.body; 
+    // const { username, password } = req.body; 
 
-    console.log('Request body:', req.body); //log the request body
+    // console.log('Request body:', req.body); //log the request body
 
     const userData = await User.findOne({
-      where: { username: req.body.username },
+      where: { username: req.body.username},
     });
     console.log('user data:', userData) //log retreived user data
     if (!userData) {
@@ -85,7 +85,7 @@ router.post('/', async (req, res) => {
     //   });
     // });
 
-      res.setHeader('Content-Type:', 'application/json')
+      // res.setHeader('Content-Type', 'application/json')
 
         res.status(200).json({
         user: {
@@ -115,6 +115,14 @@ router.post('/logout', (req, res) => {
     //   res.status(404).end();
     // }
   });
+
+// router.post('/logout', (req, res) => {
+//   req.session.destroy(() => {
+//     res.status(204).end();
+//   })
+// })
+
+
 
 module.exports = router; 
 

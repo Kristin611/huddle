@@ -1,0 +1,12 @@
+.huddle-btn {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: rgb(249, 184, 4);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
