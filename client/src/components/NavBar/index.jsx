@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './NavBar.css'
-import HuddleButton from '../CreateHuddleBtn';
+
 
 export const Navbar = () => {
 
@@ -16,7 +16,7 @@ export const Navbar = () => {
             <Link to='/'>Home</Link>
         </li>
         <li>
-            <HuddleButton />
+            
         </li>
     </ul>
    </nav>
