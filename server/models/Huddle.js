@@ -16,8 +16,8 @@ const { Model, DataTypes } = require('sequelize');
             allowNull: false,
             validate: {
                 len: {
-                    args: [1, 10],
-                    msg: "Text must be between 1 and 10 characters in length."
+                    args: [1, 30],
+                    msg: "Text must be between 1 and 30 characters in length."
                 }
             }
         },

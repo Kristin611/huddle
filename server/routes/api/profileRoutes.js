@@ -3,7 +3,7 @@ const { User, Huddle } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //get user profile page
-router.get('/profile', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
 
         const userId = req.user.id;  
@@ -28,4 +28,6 @@ router.get('/profile', async (req, res) => {
         console.error('Error fetching user profile:', error);
         res.status(500).json({error: 'Internal Server Error'})
     }
-})
+});
+
+module.exports = router;

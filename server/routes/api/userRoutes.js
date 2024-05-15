@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-//Get a user
+//Get a single user
 router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
