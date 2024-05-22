@@ -1,6 +1,8 @@
-/* .pfView-container {
-    padding: 1.25rem;
-} */
+.pfView-container {
+    /* padding: .3rem; */
+    border-radius: 5px;
+    border: 1px solid #211b1b;
+}
 
 .welcome-container {
     background-color: rgb(115, 147, 179, 0.8);
@@ -17,4 +19,7 @@
 
 .huddle-container {
     background-color: rgb(115, 147, 179, 0.8);
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    
 }
