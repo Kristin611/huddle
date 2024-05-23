@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProfileView.css';
 import HuddleButton from '../CreateHuddleBtn';
+import HuddleList from '../HuddleList';
 
 const ProfileView = () => {
   return (
@@ -11,6 +12,10 @@ const ProfileView = () => {
         </div>
         <div className='huddle-container'>
             <HuddleButton />
+            <HuddleList />
+        </div>
+        <div>
+            
         </div>
     </section>
   )

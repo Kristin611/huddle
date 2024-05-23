@@ -4,7 +4,9 @@ import './LoginModal.css'
 
 const LoginModal = ({ isOpen, onClose }) => {
     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -14,17 +16,41 @@ const LoginModal = ({ isOpen, onClose }) => {
         setPassword(e.target.value)
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(''); //clear any previous error
+
+        try {
+            const response = await fetch('http://localhost:3000/api/users/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({ username, password })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                console.log('Login successful:', result);
+                setUsername('');
+                setPassword('');
+                onClose();
+            } else {
+                console.error('Login failed:', result.message);
+                setError(result.message || 'Login failed. Please try again.')
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            setError('An error occured. Please try again.')
+        }
 
         console.log('Username:', username);
         console.log('Password:', password)
         console.log(() => {'Button clicked'})
 
-        setUsername('');
-        setPassword('');
+        // setUsername('');
+        // setPassword('');
 
-        onClose();
+        // onClose();
     }
 
   return (

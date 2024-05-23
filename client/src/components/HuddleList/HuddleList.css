@@ -1,0 +1,31 @@
+.huddle-list {
+    list-style-type: none;
+    /* padding: 0; */
+    /* margin: 2rem; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.huddle-card {
+    background-color: whitesmoke;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1); 
+    margin: 16px;
+    padding: 16px;
+    flex: 1 1 calc(33.333% - 32px); 
+    box-sizing: border-box;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.huddle-card li {
+    margin-bottom: 8px;
+}
+
+.huddle-card li:last-child {
+    margin-bottom: 0; /* Remove margin from the last item */
+  }
