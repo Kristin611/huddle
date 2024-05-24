@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './LoginModal.css'
+import { useNavigate } from 'react-router-dom';
 
 const LoginModal = ({ isOpen, onClose }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
 
     const handleUsernameChange = (e) => {
@@ -34,6 +36,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 setUsername('');
                 setPassword('');
                 onClose();
+                navigate('/profile'); //navigate to ProfileView
             } else {
                 console.error('Login failed:', result.message);
                 setError(result.message || 'Login failed. Please try again.')
