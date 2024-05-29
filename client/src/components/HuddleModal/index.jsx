@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import './HuddleModal.css';
 
 const HuddleModal = ({ isOpen, onClose }) => {
 
@@ -30,16 +31,22 @@ const HuddleModal = ({ isOpen, onClose }) => {
         e.preventDefault();
         setError(''); //clear any previous error
 
+        const payload = {
+            huddleTitle: title,
+            author,
+            huddleText: text
+        };
+
+        //console.log('Payload:', payload);
+
         try {
             const response = await fetch('http://localhost:3000/api/huddle', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    title, 
-                    author, 
-                    text 
-                }),
+                body: JSON.stringify(payload),
             });
+
+            console.log('Full response:', response);
 
             const result = await response.json();
 
@@ -49,7 +56,7 @@ const HuddleModal = ({ isOpen, onClose }) => {
                 setAuthor('');
                 setText('');
                 onClose();
-                navigate('/profile');
+                navigate(`/profile/${result.user.id}`);
             } else {
                 console.error('Huddle not created:', result.message)
                 setError(result.message || 'Failed to create huddle. Please try again.')
@@ -66,7 +73,7 @@ const HuddleModal = ({ isOpen, onClose }) => {
   return (
     <>
         <Modal className='huddle-modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='Huddle Modal'>
-            <form className='huddle-form'>
+            <form className='huddle-form' onSubmit={handleSubmit}>
                 <h3>Create Huddle</h3>
                 <div>
                     <input 
@@ -95,7 +102,7 @@ const HuddleModal = ({ isOpen, onClose }) => {
                     placeholder='Write your huddle content here...'
                     />
                 </div>
-                <button type='submit' onClick={handleSubmit}>Publish</button>
+                <button type='submit'>Publish</button>
             </form>
         </Modal>
     </>

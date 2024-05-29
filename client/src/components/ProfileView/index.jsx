@@ -1,13 +1,37 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom'; // useParams hook is used to access parameters from the URL
 import './ProfileView.css';
 import HuddleButton from '../CreateHuddleBtn';
 import HuddleList from '../HuddleList';
 
 const ProfileView = () => {
+  const { id } = useParams();
+  const [user, setUser] = useState(null); //initialize with null to indicate uninitialized state, i.e., still waiting for the data, which is useful for conditional rendering. Null is a default placeholder for objects that hold data: it indicates that the state is expected to be an object but hasn't been populated yet.
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/users/${id}`);
+        const userData = await response.json();
+
+        if (response.ok) {
+          setUser(userData); //populate user data
+        } else {
+          console.error('Failed to fetch user data:', userData.message);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    fetchUserData();
+
+  }, [id]); //effect runs again if id changes
+
   return (
     <section className='pfView-container'>
         <div className='welcome-container'>
-            <h2 className='pf-h2'>Welcome User!</h2>
+            <h2 className='pf-h2'>Welcome {user ? user.username : 'User'}!</h2>
             {/* <button className='logoutBtn'>Log out</button> */}
         </div>
         <div className='huddle-container'>

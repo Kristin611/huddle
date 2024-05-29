@@ -36,7 +36,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 setUsername('');
                 setPassword('');
                 onClose();
-                navigate('/profile'); //navigate to ProfileView
+                navigate(`/profile/${result.user.id}`); //navigate to ProfileView with user ID
             } else {
                 console.error('Login failed:', result.message);
                 setError(result.message || 'Login failed. Please try again.')
