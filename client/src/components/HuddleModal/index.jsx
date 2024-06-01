@@ -100,6 +100,7 @@ const HuddleModal = ({ isOpen, onClose }) => {
                     onChange={handleTextChange}
                     type="text" 
                     placeholder='Write your huddle content here...'
+                    className='text-area'
                     />
                 </div>
                 <button type='submit'>Publish</button>
