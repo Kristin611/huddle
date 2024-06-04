@@ -56,7 +56,7 @@ const HuddleModal = ({ isOpen, onClose }) => {
                 setAuthor('');
                 setText('');
                 onClose();
-                navigate(`/profile/${result.user.id}`);
+                navigate(`/profile/${result.id}`);
             } else {
                 console.error('Huddle not created:', result.message)
                 setError(result.message || 'Failed to create huddle. Please try again.')

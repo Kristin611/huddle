@@ -61,6 +61,7 @@ router.post('/', async (req, res) => {
       where: { username: req.body.username},
     });
     console.log('user data:', userData) //log retreived user data
+    
     if (!userData) {
       res
         .status(400)
@@ -73,31 +74,33 @@ router.post('/', async (req, res) => {
         .status(400)
         .json({ message: 'Invalid password, please try again' });
     }
-    //  req.session.save(() => {
-    //   req.session.user_id = userData.id;
-    //   req.session.username = userData.username;
-    //   req.session.logged_in = true;
      
-    //   return res.status(200).json({
-    //     user: {
-    //       id: userData.id,
-    //       username: userData.username 
-    //       },
-    //     message: 'You are now logged in!',
-    //   });
-    // });
+    req.session.save(() => {
+      console.log('Session', req.session);
+      req.session.userId = userData.id;
+      req.session.username = userData.username;
+      req.session.loggedIn = true;
+     
+      return res.status(200).json({
+        user: {
+          id: userData.id,
+          username: userData.username 
+          },
+        message: 'You are now logged in!',
+      });
+    });
 
       // res.setHeader('Content-Type', 'application/json')
 
-        res.status(200).json({
-        user: {
-          id: userData.id,
-          username: userData.username
-        },
-        message: 'You are now logged in!',
-      });
+      //   res.status(200).json({
+      //   user: {
+      //     id: userData.id,
+      //     username: userData.username
+      //   },
+      //   message: 'You are now logged in!',
+      // });
 
-      console.log('response headers:', res.getHeaders())
+      //console.log('response headers:', res.getHeaders())
 
   } catch (err) {
     console.error('Login error:', err)
