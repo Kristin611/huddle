@@ -109,23 +109,23 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    // if (req.session.logged_in) {
-    //   req.session.destroy(() => {
-    //     res.status(204).end();
-    //   });
-    req.session.destroy(() => {
-            res.status(204).end();
-    })
-    // } else {
-    //   res.status(404).end();
-    // }
-  });
+    try {
+      if (req.session.loggedIn) {
+        req.session.destroy((err) => {
+          if (err) {
+            res.status(500).json({error: 'Failed to destroy session'});
+          } 
+          res.status(204).end();
+        });
+      } else {
+        res.status(404).json({error: 'User not logged in'})
+      }
 
-// router.post('/logout', (req, res) => {
-//   req.session.destroy(() => {
-//     res.status(204).end();
-//   })
-// })
+    } catch (error) {
+      res.status(500).json({error: 'Failed to logout:', details: error.message});
+    }
+
+  });
 
 
 

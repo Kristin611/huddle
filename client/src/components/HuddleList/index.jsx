@@ -25,7 +25,10 @@ const HuddleList = () => {
         <ul className='huddle-list'>
             {huddles.map(huddle => (
                 <div key={huddle.id} className='huddle-card'>
-                    <li><h2>{huddle.huddleTitle}</h2><h3>by {huddle.author}</h3></li>
+                    <li>
+                        <h2>{huddle.huddleTitle}</h2>
+                        <h3>by {huddle.author}</h3>
+                    </li>
                     <li>{huddle.huddleText}</li>
                 </div>
             ))}
