@@ -3,12 +3,13 @@ import Modal from 'react-modal';
 import './LoginModal.css'
 import { useNavigate } from 'react-router-dom';
 
-const LoginModal = ({ isOpen, onClose }) => {
+const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
+    // console.log('LoginModal - setIsLoggedIn:', setIsLoggedIn);
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -22,11 +23,14 @@ const LoginModal = ({ isOpen, onClose }) => {
         e.preventDefault();
         setError(''); //clear any previous error
 
+        
+
         try {
             const response = await fetch('http://localhost:3000/api/users/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify({ username, password }),
+                credentials: 'include',
             });
 
             const result = await response.json();
@@ -35,6 +39,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 console.log('Login successful:', result);
                 setUsername('');
                 setPassword('');
+                setIsLoggedIn(true);
                 onClose();
                 navigate(`/profile/${result.user.id}`); //navigate to ProfileView with user ID
             } else {

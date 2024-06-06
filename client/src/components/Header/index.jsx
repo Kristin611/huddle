@@ -5,17 +5,21 @@ import LoginButton from '../LoginBtn';
 import LogoutButton from '../LogoutBtn';
 
 
-export const Header = () => {
+export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 
-
-
+  console.log('Header - isLoggedIn:', isLoggedIn);
+  console.log('Header - setIsLoggedIn:', setIsLoggedIn);
+  
   return (
     <>
         <section className='container'>
               <img className='logoImage' src={huddleLogo} alt='cartoon penguin'/>
               <div className='spacer'></div>
-              <LoginButton />
-              <LogoutButton />  
+              {isLoggedIn ? (
+                <LogoutButton setIsLoggedIn={setIsLoggedIn}/> 
+              ) : (
+                <LoginButton setIsLoggedIn={setIsLoggedIn}/>
+              )}   
         </section>
     </>
   )
