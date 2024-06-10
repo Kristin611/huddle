@@ -50,6 +50,48 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const huddleData = await Huddle.destroy({
+            where: {
+                id: req.params.id,
+            }
+        });
+
+        if (!huddleData) {
+            res.status(404).json({message: "No huddle found with this id!"});
+            return;
+        }
+
+        res.status(200).json({message: 'Huddle deleted successfully!'})
+
+    } catch (error) {
+        console.error('Error deleting huddle:', error);
+        res.status(500).json({message: 'An error occured while deleting this huddle.'});
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    try {
+        const huddleData = await Huddle.update(req.body, {
+            where: {
+                id: req.params.id,
+            }
+        });
+
+        //[0] is to check if any rows were affected
+        if (!huddleData[0]) {
+            res.status(404).json({message: 'No huddle found with this id!'});
+            return;
+        }
+
+        res.status(200).json({message: 'Huddle updated successfully!'});
+
+    } catch (error) {
+        console.error('Error updating huddle:', error);
+        res.status(500).json({message: 'An error occured while updating this huddle.'})
+    }
+});
 
 
 module.exports = router; 

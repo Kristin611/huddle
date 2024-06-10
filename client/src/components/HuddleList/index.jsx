@@ -30,6 +30,10 @@ const HuddleList = () => {
                         <h3>by {huddle.author}</h3>
                     </li>
                     <li>{huddle.huddleText}</li>
+                    <div className='edit-buttons'>
+                        <button title='Edit'>✎</button>
+                        <button title='Delete'>🗑️</button>
+                    </div>    
                 </div>
             ))}
         </ul>

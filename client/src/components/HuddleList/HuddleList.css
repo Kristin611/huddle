@@ -29,3 +29,17 @@
 .huddle-card li:last-child {
     margin-bottom: 0; /* Remove margin from the last item */
   }
+
+.edit-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+     
+}  
+
+.edit-buttons button {
+    border: none;
+    background-color: whitesmoke;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
