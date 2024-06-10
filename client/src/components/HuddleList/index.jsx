@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import EditHuddleBtn from '../EditHuddleBtn/index';
 import './HuddleList.css';
 
 const HuddleList = () => {
@@ -31,8 +32,8 @@ const HuddleList = () => {
                     </li>
                     <li>{huddle.huddleText}</li>
                     <div className='edit-buttons'>
-                        <button title='Edit'>✎</button>
-                        <button title='Delete'>🗑️</button>
+                        <EditHuddleBtn huddle={huddle}/>
+                        {/* <button title='Delete'>🗑️</button> */}
                     </div>    
                 </div>
             ))}
