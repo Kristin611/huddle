@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react';
+import EditHuddleModal from '../EditHuddleModal/index';
 
-const EditHuddle = ({ huddle }) => {
+const EditHuddleBtn = ({ huddle }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -12,10 +13,14 @@ const EditHuddle = ({ huddle }) => {
     setIsModalOpen(false);
   };
 
+  console.log('button clicked');
 
   return (
+    <>
     <button title='Edit' onClick={handleEditHuddleClick}>✎</button>
+    <EditHuddleModal isOpen={isModalOpen} onClose={handleCloseModal} huddle={huddle}/>
+    </>
   )
 }
 
-export default EditHuddle
+export default EditHuddleBtn

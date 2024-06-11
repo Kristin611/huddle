@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { useNavigate } from 'react-router-dom';
-import './HuddleModal.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import './EditHuddleModal.css';
 
-const HuddleModal = ({ isOpen, onClose }) => {
 
-    // if (!isOpen) {
-    //     return null;
-    // }
-
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [text, setText] = useState('');
+const EditHuddle = ({ isOpen, onClose, huddle }) => {
+    const [title, setTitle] = useState(huddle.huddleTitle);
+    const [author, setAuthor] = useState(huddle.author);
+    const [text, setText] = useState(huddle.huddleText);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -29,7 +26,7 @@ const HuddleModal = ({ isOpen, onClose }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); //clear any previous error
+        setError('');
 
         const payload = {
             huddleTitle: title,
@@ -37,51 +34,42 @@ const HuddleModal = ({ isOpen, onClose }) => {
             huddleText: text
         };
 
-        //console.log('Payload:', payload);
-
         try {
-            const response = await fetch('http://localhost:3000/api/huddle', {
-                method: 'POST',
+            const response = await fetch(`http://localhost:3000/api/huddle/${huddle.id}`, {
+                method: 'PUT',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(payload),
             });
 
-            console.log('Full response:', response);
+            console.log('Edit huddle response object:', response)
 
             const result = await response.json();
 
             if (response.ok) {
-                console.log('Huddle created:', result)
-                setTitle('');
-                setAuthor('');
-                setText('');
+                console.log('Huddle updated:', result);
                 onClose();
-                navigate(`/profile/${result.id}`);
+                navigate(`/profile/${id}`);
             } else {
-                console.error('Huddle not created:', result.message)
-                setError(result.message || 'Failed to create huddle. Please try again.')
+                console.error('Huddle not updated:', result.message);
+                setError(result.message || 'Failed to update Huddle. Please try again.')
             }
-
         } catch (error) {
-            console.error('Huddle error:', error)
-            setError('An error occured. Please try again.')
+            console.error('Huddle error:', error);
+            setError('An error occured, please try again.');
         }
     };
 
-
-
   return (
     <>
-        <Modal className='huddle-modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='Huddle Modal'>
-            <form className='huddle-form' onSubmit={handleSubmit}>
-                <h3>Create Huddle</h3>
+        <Modal isOpen={isOpen} onRequestClose={onClose} contentLabel='Edit Huddle Modal'>
+            <form onSubmit={handleSubmit}>
+                <h3>Edit Huddle</h3>
                 <div>
                     <input 
                     value={title}
                     name='title'
                     onChange={handleTitleChange}
-                    type="text"
-                    placeholder='New Huddle title here...' 
+                    type="text" 
                     />
                 </div>
                 <div>
@@ -90,7 +78,6 @@ const HuddleModal = ({ isOpen, onClose }) => {
                     name='author'
                     onChange={handleAuthorChange}
                     type="text" 
-                    placeholder='Write your name here...'
                     />
                 </div>
                 <div>
@@ -99,16 +86,13 @@ const HuddleModal = ({ isOpen, onClose }) => {
                     name='text'
                     onChange={handleTextChange}
                     type="text" 
-                    placeholder='Write your Huddle content here...'
-                    className='text-area'
                     />
                 </div>
-                <button type='submit'>Publish</button>
+                <button type='submit'>Update</button>
             </form>
         </Modal>
     </>
   )
 }
 
-export default HuddleModal
-
+export default EditHuddle
