@@ -13,7 +13,7 @@ const EditHuddleBtn = ({ huddle }) => {
     setIsModalOpen(false);
   };
 
-  console.log('button clicked');
+  // console.log('button clicked');
 
   return (
     <>

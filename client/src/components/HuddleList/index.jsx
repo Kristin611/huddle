@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditHuddleBtn from '../EditHuddleBtn/index';
 import './HuddleList.css';
+import DelHuddleBtn from '../DelHuddleBtn/index';
 
 const HuddleList = () => {
     const [huddles, setHuddle ] = useState([]);
@@ -21,6 +22,10 @@ const HuddleList = () => {
         fetchHuddles();
     }, []);
 
+    const handleDelete = (huddleId) => {
+        setHuddle(huddles.filter(huddle => huddle.id !== huddleId));
+    };
+
   return (
     <div>
         <ul className='huddle-list'>
@@ -33,7 +38,7 @@ const HuddleList = () => {
                     <li>{huddle.huddleText}</li>
                     <div className='edit-buttons'>
                         <EditHuddleBtn huddle={huddle}/>
-                        {/* <button title='Delete'>🗑️</button> */}
+                        <DelHuddleBtn huddle={huddle} onDelete={handleDelete}/>
                     </div>    
                 </div>
             ))}

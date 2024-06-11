@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './HuddleModal.css';
 
 const HuddleModal = ({ isOpen, onClose }) => {
@@ -14,6 +14,7 @@ const HuddleModal = ({ isOpen, onClose }) => {
     const [text, setText] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -56,7 +57,7 @@ const HuddleModal = ({ isOpen, onClose }) => {
                 setAuthor('');
                 setText('');
                 onClose();
-                navigate(`/profile/${result.id}`);
+                navigate(`/profile/${id}`);
             } else {
                 console.error('Huddle not created:', result.message)
                 setError(result.message || 'Failed to create huddle. Please try again.')
