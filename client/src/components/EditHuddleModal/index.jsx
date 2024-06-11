@@ -61,8 +61,8 @@ const EditHuddle = ({ isOpen, onClose, huddle }) => {
 
   return (
     <>
-        <Modal isOpen={isOpen} onRequestClose={onClose} contentLabel='Edit Huddle Modal'>
-            <form onSubmit={handleSubmit}>
+        <Modal className='edit-huddle-modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='Edit Huddle Modal'>
+            <form className='edit-huddle-form' onSubmit={handleSubmit}>
                 <h3>Edit Huddle</h3>
                 <div>
                     <input 
@@ -86,6 +86,7 @@ const EditHuddle = ({ isOpen, onClose, huddle }) => {
                     name='text'
                     onChange={handleTextChange}
                     type="text" 
+                    className='text-area'
                     />
                 </div>
                 <button type='submit'>Update</button>
