@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../../models/user');
 
 //the '/api/users' endpoint
-
+console.log('hey man')
 //GET all users
 router.get('/', async (req, res) => {
     try {
@@ -53,12 +53,12 @@ router.post('/', async (req, res) => {
 
   router.post('/login', async (req, res) => {
   try {
-    // const { username, password } = req.body; 
+    const { username, password } = req.body; 
 
-    // console.log('Request body:', req.body); //log the request body
+    console.log('Request body:', req.body); //log the request body
 
     const userData = await User.findOne({
-      where: { username: req.body.username},
+      where: { username },
     });
     console.log('user data:', userData) //log retreived user data
     
@@ -68,7 +68,7 @@ router.post('/', async (req, res) => {
         .json({ message: 'Incorrect username or password, please try again' });
       return;
     }
-    const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(password);
     if (!validPassword) {
       res
         .status(400)
@@ -109,6 +109,17 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
+    // if (req.session.logged_in) {
+    //   req.session.destroy(() => {
+    //     res.status(204).end();
+    //   });
+    // req.session.destroy(() => {
+            res.status(204).end();
+    // })
+    // } else {
+    //   res.status(404).end();
+    // }
+  });
     try {
       if (req.session.loggedIn) {
         req.session.destroy((err) => {
@@ -126,6 +137,8 @@ router.post('/logout', (req, res) => {
     }
 
   });
+
+
 
 
 
