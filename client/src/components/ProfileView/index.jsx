@@ -35,7 +35,7 @@ const ProfileView = () => {
             {/* <button className='logoutBtn'>Log out</button> */}
         </div>
         <div className='huddle-container'>
-            <HuddleButton />
+            {user && <HuddleButton user_id={user.id}/>}
             <HuddleList />
         </div>
         <div>

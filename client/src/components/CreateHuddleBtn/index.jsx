@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HuddleModal from '../HuddleModal';
 import './CreateHuddleBtn.css';
 
-const HuddleButton = () => {
+const HuddleButton = ({user_id}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleCreateHuddleClick = () => {
@@ -17,7 +17,7 @@ const HuddleButton = () => {
   return (
     <>
         <button className='huddle-btn' onClick={handleCreateHuddleClick}>+</button>
-        <HuddleModal isOpen={isModalOpen} onClose={handleCloseModal} />
+        <HuddleModal isOpen={isModalOpen} onClose={handleCloseModal} user_id={user_id}/>
     </>
   )
 }

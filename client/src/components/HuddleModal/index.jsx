@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { useNavigate, useParams } from 'react-router-dom';
 import './HuddleModal.css';
 
-const HuddleModal = ({ isOpen, onClose }) => {
+const HuddleModal = ({ isOpen, onClose, user_id }) => {
 
     // if (!isOpen) {
     //     return null;
@@ -35,7 +35,8 @@ const HuddleModal = ({ isOpen, onClose }) => {
         const payload = {
             huddleTitle: title,
             author,
-            huddleText: text
+            huddleText: text,
+            user_id
         };
 
         //console.log('Payload:', payload);

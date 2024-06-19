@@ -9,7 +9,8 @@ router.post('/', async (req, res) => {
         const huddleData = await Huddle.create({
             huddleTitle: req.body.huddleTitle,
             huddleText: req.body.huddleText,
-            author: req.body.author
+            author: req.body.author,
+            user_id: req.body.user_id
 
         });
 
