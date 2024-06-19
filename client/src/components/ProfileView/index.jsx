@@ -14,8 +14,11 @@ const ProfileView = () => {
         const response = await fetch(`http://localhost:3000/api/users/${id}`);
         const userData = await response.json();
 
+        console.log('Fetched userData:', userData);
+
         if (response.ok) {
           setUser(userData); //populate user data
+          console.log('User ID in ProfileView:', userData.id);
         } else {
           console.error('Failed to fetch user data:', userData.message);
         }
@@ -27,6 +30,8 @@ const ProfileView = () => {
     fetchUserData();
 
   }, [id]); //effect runs again if id changes
+
+  console.log('User in ProfileView render:', user);
 
   return (
     <section className='pfView-container'>

@@ -39,7 +39,8 @@ const HuddleModal = ({ isOpen, onClose, user_id }) => {
             user_id
         };
 
-        //console.log('Payload:', payload);
+        console.log('Payload:', payload);
+        console.log('user ID:', user_id);
 
         try {
             const response = await fetch('http://localhost:3000/api/huddle', {
@@ -48,7 +49,7 @@ const HuddleModal = ({ isOpen, onClose, user_id }) => {
                 body: JSON.stringify(payload),
             });
 
-            console.log('Full response:', response);
+            // console.log('Full response:', response);
 
             const result = await response.json();
 
