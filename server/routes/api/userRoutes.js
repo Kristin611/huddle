@@ -39,15 +39,20 @@ router.post('/', async (req, res) => {
         username: req.body.username,
         password: req.body.password
       });
-    //   req.session.save(() => {
-    //     req.session.user_id = userData.id;
-    //     req.session.username = userData.username;
-    //     req.session.logged_in = true;
-    //     res.status(200).json(userData);
-    //   });
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.username = userData.username;
+        req.session.logged_in = true;
         res.status(200).json(userData);
+      });
+        // res.status(200).json(userData);
     } catch (err) {
-      res.status(400).json(err);
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        res.status(400).json({message: 'Username is already taken.'})
+      } else {
+        res.status(500).json({message: 'Failed to create user.'});
+      }
+      
     }
   });
 
