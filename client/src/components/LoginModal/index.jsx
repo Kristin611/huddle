@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import CreateAcctBtn from '../CreateAcctBtn/index';
 import './LoginModal.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -87,6 +88,7 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
                 </button>
                 
             </form>
+            <CreateAcctBtn username={username} password={password}/>
 
         </Modal>
     </>

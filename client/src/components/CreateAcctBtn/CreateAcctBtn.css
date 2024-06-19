@@ -1,0 +1,13 @@
+.create-acct-btn {
+    margin-top: 10px;
+    background-color: rgb(115, 147, 179);
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.create-acct-btn:hover {
+    background-color: rgb(105, 142, 179);
+}

@@ -34,16 +34,28 @@ router.get('/:id', async (req, res) => {
 
 //create user
 router.post('/', async (req, res) => {
+  // console.log(req.headers)
+  console.log(req.body)
     try {
       const userData = await User.create({
         username: req.body.username,
         password: req.body.password
       });
+
+      //creating a structured response object  
+      const response = {
+        user: {
+          id: userData.id,
+          username: userData.username
+        },
+        message: 'Account created!'
+      };
+
       req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.username = userData.username;
         req.session.logged_in = true;
-        res.status(200).json(userData);
+        res.status(200).json(response);
       });
         // res.status(200).json(userData);
     } catch (err) {
