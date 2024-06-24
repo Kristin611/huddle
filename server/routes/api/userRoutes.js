@@ -68,6 +68,32 @@ router.post('/', async (req, res) => {
     }
   });
 
+  router.delete('/:id', async (req, res) => {
+    try {
+      const userData = await User.destroy({
+        where: {
+          id: req.params.id
+        },
+      });
+  
+      if (!userData) {
+        res.status(404).json({message: 'No user with this id!'});
+        return;
+      }
+
+      req.session.destroy((err) => {
+        if (err) {
+          res.status(500).json({message: 'User deleted but failed to destroy session!'})
+        } else {
+          res.status(200).json({message: 'User successfully deleted and session destroyed!'});
+        }
+      });
+  
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  });
+
   router.post('/login', async (req, res) => {
   try {
     // const { username, password } = req.body; 
