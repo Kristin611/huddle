@@ -51,6 +51,27 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+//get huddles by user_id
+router.get('/user/:userId', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const huddleData = await Huddle.findAll({
+            where: {
+                user_id: userId
+            }
+        });
+
+        if (huddleData.length === 0) {
+            res.status(404).json({message: 'No huddles found for this user!'});
+            return;
+        }
+
+        res.status(200).json(huddleData)
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
+
 router.delete('/:id', async (req, res) => {
     try {
         const huddleData = await Huddle.destroy({
