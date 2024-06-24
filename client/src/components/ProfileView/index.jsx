@@ -37,7 +37,6 @@ const ProfileView = () => {
     <section className='pfView-container'>
         <div className='welcome-container'>
             <h2 className='pf-h2'>Welcome {user ? user.username : 'User'}!</h2>
-            {/* <button className='logoutBtn'>Log out</button> */}
         </div>
         <div className='huddle-container'>
             {user && <HuddleButton user_id={user.id}/>}

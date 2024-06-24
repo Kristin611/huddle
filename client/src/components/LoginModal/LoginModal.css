@@ -11,6 +11,7 @@
 .loginForm {
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
     
    
 }
@@ -36,4 +37,9 @@
     background-color: rgb(105, 142, 179);
 
 }
+
+/* .create-account-btn {
+    display: flex;
+    align-items: end;
+} */
 

@@ -66,30 +66,32 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
     <>
         <Modal className='modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='Login Modal'>
             {/* <h2>Enter Your Credentials:</h2> */}
-            <form className='loginForm'>
-                <h3>Username</h3>
-                <input
+            <div>
+                <form className='loginForm'>
+                    <h3>Username</h3>
+                    <input
                     value={username}
                     name="username"
                     onChange={handleUsernameChange}
                     type='text'
                     className='loginInput'
-                />
-                <h3>Password</h3>
-                <input 
+                    />
+                    <h3>Password</h3>
+                    <input 
                     value={password}
                     name='password'
                     onChange={handlePasswordChange}
                     type='text'
                     className='loginInput'
-                />
-                <button className='loginBtn' type='submit' onClick={handleSubmit}>
+                    />
+                    <button className='loginBtn' type='submit' onClick={handleSubmit}>
                     Log in
-                </button>
-                
-            </form>
-            <CreateAcctBtn username={username} password={password} setUsername={setUsername} setPassword={setPassword} />
-
+                    </button>
+                </form>
+                <div className='create-account-btn'>
+                    <CreateAcctBtn username={username} password={password} setUsername={setUsername} setPassword={setPassword} />
+                </div>
+            </div>
         </Modal>
     </>
   )
