@@ -88,7 +88,7 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
                 </button>
                 
             </form>
-            <CreateAcctBtn username={username} password={password}/>
+            <CreateAcctBtn username={username} password={password} setUsername={setUsername} setPassword={setPassword} />
 
         </Modal>
     </>
