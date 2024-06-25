@@ -5,7 +5,7 @@ import './LoginBtn.css'
 export const LoginButton = ({ setIsLoggedIn }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log('LoginButton - setIsLoggedIn:', setIsLoggedIn);
+  // console.log('LoginButton - setIsLoggedIn:', setIsLoggedIn);
 
   const handleLoginClick = () => {
     setIsModalOpen(true);

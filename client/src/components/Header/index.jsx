@@ -3,12 +3,14 @@ import './Header.css'
 import huddleLogo from '../../assets/Logo_2.png';
 import LoginButton from '../LoginBtn';
 import LogoutButton from '../LogoutBtn';
+import SignupBtn from '../SignUpBtn';
+
 
 
 export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 
-  console.log('Header - isLoggedIn:', isLoggedIn);
-  console.log('Header - setIsLoggedIn:', setIsLoggedIn);
+  // console.log('Header - isLoggedIn:', isLoggedIn);
+  // console.log('Header - setIsLoggedIn:', setIsLoggedIn);
   
   return (
     <>
@@ -18,7 +20,11 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
               {isLoggedIn ? (
                 <LogoutButton setIsLoggedIn={setIsLoggedIn}/> 
               ) : (
+                <>
                 <LoginButton setIsLoggedIn={setIsLoggedIn}/>
+                <SignupBtn setIsLoggedIn={setIsLoggedIn}/>                
+                </>
+                
               )}   
         </section>
     </>

@@ -1,0 +1,39 @@
+.modal {
+    /* width: 5rem;
+    height: 5rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+}
+
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    
+   
+}
+
+.signupInput {
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    
+}
+
+.signupBtn {
+    margin-top: 10px;
+    background-color: rgb(115, 147, 179);
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.signupBtn:hover {
+    background-color: rgb(105, 142, 179);
+
+}
+

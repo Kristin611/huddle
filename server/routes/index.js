@@ -1,15 +1,15 @@
 const router = require('express').Router();
-const apiRoutes = require('./api');
-const htmlRoutes = require('./htmlRoutes')
+const apiRoutes = require('./api/');
+// const htmlRoutes = require('./htmlRoutes')
 
 //Ensure that you're mounting your routes in the correct order. Middleware and routes are executed in the order they are mounted, so make sure that more specific routes are mounted before more general routes.
 router.use('/api', apiRoutes)
-router.use('/', htmlRoutes)
+// router.use('/', htmlRoutes)
 
 
-router.use((req, res) => {
-    res.send('<h1>Wrong Route!</h1>')
-})
+// router.use((req, res) => {
+//     res.send('<h1>Wrong Route!</h1>')
+// })
 
 module.exports = router;
 

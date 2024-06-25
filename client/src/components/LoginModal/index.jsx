@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './LoginModal.css'
 import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../../utils/api'
 
 const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
@@ -26,22 +27,19 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
         
 
         try {
-            const response = await fetch('http://localhost:3000/api/users/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify({ username, password }),
-                credentials: 'include',
-            });
-
-            const result = await response.json();
-
+            const response = await fetch(loginUser);
+           
+         
+           
             if (response.ok) {
-                console.log('Login successful:', result);
-                setUsername('');
-                setPassword('');
-                setIsLoggedIn(true);
-                onClose();
-                navigate(`/profile/${result.user.id}`); //navigate to ProfileView with user ID
+                // console.log('Login successful:', result);
+                // navigate(`/profile/${result.user.id}`);
+                // setUsername('');
+                // setPassword('');
+                // setIsLoggedIn(true);
+                // onClose();
+                 //navigate to ProfileView with user ID
+                 console.log(response.url)
             } else {
                 console.error('Login failed:', result.message);
                 setError(result.message || 'Login failed. Please try again.')
@@ -51,9 +49,9 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
             setError('An error occured. Please try again.')
         }
 
-        console.log('Username:', username);
-        console.log('Password:', password)
-        console.log(() => {'Button clicked'})
+        // console.log('Username:', username);
+        // console.log('Password:', password)
+        // console.log(() => {'Button clicked'})
 
         // setUsername('');
         // setPassword('');
@@ -64,8 +62,12 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
   return (
     <>
         <Modal className='modal' isOpen={isOpen} onRequestClose={onClose} contentLabel='Login Modal'>
-            {/* <h2>Enter Your Credentials:</h2> */}
+           
             <form className='loginForm'>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <span>Log In</span>
+                <button onClick={onClose} style={{border: 'none', background: 'transparent', cursor: 'pointer'}}>X</button>
+            </div>
                 <h3>Username</h3>
                 <input
                     value={username}
