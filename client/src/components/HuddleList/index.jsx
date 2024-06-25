@@ -3,6 +3,7 @@ import axios from 'axios';
 import EditHuddleBtn from '../EditHuddleBtn/index';
 import './HuddleList.css';
 import DelHuddleBtn from '../DelHuddleBtn/index';
+import MyHuddles from '../MyHuddlesBtn';
 
 const HuddleList = () => {
     const [huddles, setHuddle ] = useState([]);
@@ -28,6 +29,9 @@ const HuddleList = () => {
 
   return (
     <div>
+        <div className='my-huddles'>
+            <MyHuddles setHuddle={setHuddle}/>
+        </div>
         <ul className='huddle-list'>
             {huddles.map(huddle => (
                 <div key={huddle.id} className='huddle-card'>
@@ -43,6 +47,7 @@ const HuddleList = () => {
                 </div>
             ))}
         </ul>
+        
     </div>
   )
 }

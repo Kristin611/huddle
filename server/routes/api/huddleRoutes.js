@@ -52,9 +52,9 @@ router.get('/:id', async (req, res) => {
 });
 
 //get huddles by user_id
-router.get('/user/:userId', async (req, res) => {
+router.get('/user/:id', async (req, res) => {
     try {
-        const userId = req.params.userId;
+        const userId = req.params.id;
         const huddleData = await Huddle.findAll({
             where: {
                 user_id: userId

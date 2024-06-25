@@ -17,7 +17,7 @@
     padding: 16px;
     flex: 1 1 calc(33.333% - 32px); 
     box-sizing: border-box;
-    max-width: 100%;
+    max-width: 70%;
     display: flex;
     flex-direction: column;
 }
@@ -42,4 +42,10 @@
     background-color: whitesmoke;
     cursor: pointer;
     font-size: 1.3rem;
+}
+
+.my-huddles {
+    display: flex;
+    justify-content: end;
+    padding-right: 3rem;
 }

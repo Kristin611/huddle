@@ -19,7 +19,7 @@ const ProfileView = () => {
 
         if (response.ok) {
           setUser(userData); //populate user data
-          console.log('User ID in ProfileView:', userData.id);
+          //console.log('User ID in ProfileView:', userData.id);
         } else {
           console.error('Failed to fetch user data:', userData.message);
         }
@@ -38,7 +38,6 @@ const ProfileView = () => {
     <section className='pfView-container'>
         <div className='welcome-container'>
             <h2 className='pf-h2'>Welcome {user ? user.username : 'User'}!</h2>
-            <MyHuddles />
         </div>
         <div className='huddle-container'>
             {user && <HuddleButton user_id={user.id}/>}
