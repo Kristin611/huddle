@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'; // useParams hook is used to acces
 import './ProfileView.css';
 import HuddleButton from '../CreateHuddleBtn';
 import HuddleList from '../HuddleList';
+import MyHuddles from '../MyHuddlesBtn';
 
 const ProfileView = () => {
   const { id } = useParams();
@@ -37,6 +38,7 @@ const ProfileView = () => {
     <section className='pfView-container'>
         <div className='welcome-container'>
             <h2 className='pf-h2'>Welcome {user ? user.username : 'User'}!</h2>
+            <MyHuddles />
         </div>
         <div className='huddle-container'>
             {user && <HuddleButton user_id={user.id}/>}

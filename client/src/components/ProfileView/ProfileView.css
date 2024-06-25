@@ -9,7 +9,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-right: 2rem;
 }
+
+/* .my-huddles-btn {
+    padding-right: 5px;
+    color:blueviolet;
+} */
 
 .pf-h2 {
     text-align: center;
