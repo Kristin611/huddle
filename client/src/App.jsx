@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn}/>
       <main>
         <Outlet />
       </main>

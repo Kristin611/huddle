@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './NavBar.css'
+import './NavBar.css';
+import MyProfile from '../MyProfileBtn/index';
 
 
-export const Navbar = () => {
+export const Navbar = ({ isLoggedIn }) => {
 
     // const currentPage = useLocation().pathname;
     // console.log(currentPage);
@@ -16,7 +17,7 @@ export const Navbar = () => {
             <Link to='/'>Home</Link>
         </li>
         <li>
-            <Link to='profile/:id'>My Profile</Link>
+            <MyProfile isLoggedIn={isLoggedIn}/>
         </li>
     </ul>
    </nav>
