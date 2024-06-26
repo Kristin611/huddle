@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'; // useParams hook is used to acces
 import './ProfileView.css';
 import HuddleButton from '../CreateHuddleBtn';
 import HuddleList from '../HuddleList';
-import MyHuddles from '../MyHuddlesBtn';
+
 
 const ProfileView = () => {
   const { id } = useParams();

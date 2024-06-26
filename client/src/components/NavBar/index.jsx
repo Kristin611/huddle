@@ -16,7 +16,7 @@ export const Navbar = () => {
             <Link to='/'>Home</Link>
         </li>
         <li>
-            
+            <Link to='profile/:id'>My Profile</Link>
         </li>
     </ul>
    </nav>

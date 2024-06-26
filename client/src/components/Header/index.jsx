@@ -7,8 +7,8 @@ import LogoutButton from '../LogoutBtn';
 
 export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 
-  console.log('Header - isLoggedIn:', isLoggedIn);
-  console.log('Header - setIsLoggedIn:', setIsLoggedIn);
+  // console.log('Header - isLoggedIn:', isLoggedIn);
+  // console.log('Header - setIsLoggedIn:', setIsLoggedIn);
   
   return (
     <>
