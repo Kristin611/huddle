@@ -1,4 +1,5 @@
 import React from 'react';
+import './AllHuddlesBtn.css';
 
 const AllHuddles = ({ setHuddle }) => {
 
@@ -19,7 +20,7 @@ const AllHuddles = ({ setHuddle }) => {
     }
   return (
     <>
-        <button onClick={handleClick}>All Huddles</button>
+        <button className='all-huddles-btn'onClick={handleClick}>All Huddles</button>
     </>
   )
 }

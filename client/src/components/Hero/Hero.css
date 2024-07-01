@@ -33,3 +33,66 @@
 .huddleText {
     margin-top: -8%;
 }
+
+@media (max-width: 1200px) {
+    .text-overlay {
+        width: 60%;
+        height: 35%;
+        top: 35%;
+        left: 35%;
+    }
+
+    .huddleTitle {
+        font-size: 4rem;
+    }
+}
+
+/* @media (max-width: 992px) {
+    .text-overlay {
+        width: 70%;
+        height: 40%;
+        top: 40%;
+        left: 40%;
+    }
+
+    .huddleTitle {
+        font-size: 3rem;
+    }
+} */
+
+@media (max-width: 768px) {
+    .text-overlay {
+        width: 80%;
+        height: 45%;
+        top: 45%;
+        left: 45%;
+    }
+
+    .huddleTitle {
+        font-size: 2.5rem;
+    }
+
+    .huddleText {
+        font-size: 1rem;
+        margin-top: -5%;
+    }
+}
+
+@media (max-width: 576px) {
+    .text-overlay {
+        width: 90%;
+        height: 50%;
+        top: 50%;
+        left: 50%;
+        padding-left: 2%;
+    }
+
+    .huddleTitle {
+        font-size: 2rem;
+    }
+
+    .huddleText {
+        font-size: 0.9rem;
+        margin-top: -5%;
+    }
+}
