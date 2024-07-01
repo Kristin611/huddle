@@ -4,6 +4,7 @@ import EditHuddleBtn from '../EditHuddleBtn/index';
 import './HuddleList.css';
 import DelHuddleBtn from '../DelHuddleBtn/index';
 import MyHuddles from '../MyHuddlesBtn';
+import AllHuddles from '../AllHuddlesBtn';
 
 const HuddleList = () => {
     const [huddles, setHuddle ] = useState([]);
@@ -31,6 +32,7 @@ const HuddleList = () => {
     <div>
         <div className='my-huddles'>
             <MyHuddles setHuddle={setHuddle}/>
+            <AllHuddles setHuddle={setHuddle}/>
         </div>
         <ul className='huddle-list'>
             {huddles.map(huddle => (
