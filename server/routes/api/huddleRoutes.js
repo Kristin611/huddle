@@ -4,7 +4,7 @@ const withAuth = require('../../utils/auth');
 
 
 //create a huddle
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const huddleData = await Huddle.create({
             huddleTitle: req.body.huddleTitle,
@@ -72,7 +72,7 @@ router.get('/user/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const huddleData = await Huddle.destroy({
             where: {
@@ -93,7 +93,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const huddleData = await Huddle.update(req.body, {
             where: {

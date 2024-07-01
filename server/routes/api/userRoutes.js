@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../../models/user');
+const withAuth = require('../../utils/auth');
 
 //the '/api/users' endpoint
 
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
 })
 
 //Get a single user
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       attributes: ['id', 'username'],
@@ -68,6 +69,7 @@ router.post('/', async (req, res) => {
     }
   });
 
+  //may want to inject withAuth here so only logged-in users can delete their accounts
   router.delete('/:id', async (req, res) => {
     try {
       const userData = await User.destroy({
