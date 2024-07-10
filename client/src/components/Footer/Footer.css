@@ -1,0 +1,18 @@
+.footer-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    padding-left: 13rem;
+    /* align-items: center; */
+    /* flex-direction: column; */
+    background-color: rgba(115, 147, 179, 0.8);
+    border: 1px solid #211b1b;
+    border-radius: 3px;
+}
+
+.footer-logo {
+    max-width: 20%;
+    height: auto;
+    
+}
+

@@ -1,12 +1,14 @@
 .heroImg {
     width: 100%;
+    height: 100%;
+    
 }
 
 .hero-container {
     position: relative;
     border: 1px solid #211b1b;
     border-radius: 3px;
-    
+    background-color: rgb(115, 147, 179, 0.8);
 }
 
 .text-overlay {
