@@ -6,7 +6,7 @@ import MyProfile from '../MyProfileBtn/index';
 
 export const Navbar = ({ isLoggedIn }) => {
 
-    // const currentPage = useLocation().pathname;
+    //const currentPage = useLocation().pathname;
     // console.log(currentPage);
 
   return (
@@ -17,7 +17,7 @@ export const Navbar = ({ isLoggedIn }) => {
             <Link to='/'>Home</Link>
         </li>
         <li>
-            {/* <MyProfile isLoggedIn={isLoggedIn}/> */}
+            <Link to='/about'>About</Link>
         </li>
     </ul>
    </nav>
