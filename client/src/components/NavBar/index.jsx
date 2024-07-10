@@ -17,7 +17,7 @@ export const Navbar = ({ isLoggedIn }) => {
             <Link to='/'>Home</Link>
         </li>
         <li>
-            <MyProfile isLoggedIn={isLoggedIn}/>
+            {/* <MyProfile isLoggedIn={isLoggedIn}/> */}
         </li>
     </ul>
    </nav>

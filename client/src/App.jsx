@@ -3,6 +3,7 @@ import { Header } from './components/Header/index';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/NavBar/index';
 import Modal from 'react-modal';
+import Footer from './components/Footer/index';
 
 
 
@@ -26,6 +27,7 @@ function App() {
       <main>
         <Outlet />
       </main>
+      <Footer />
     </>
   )
 }
