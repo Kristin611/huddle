@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
+    app.use(express.static(path.join(__dirname, '../client/client/dist/assets')));
 
   } else {
     app.use(express.static(path.join(__dirname, '../client/public')))
