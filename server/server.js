@@ -29,14 +29,26 @@ const sess = {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sess));
-app.use(routes);
 
+// logging middleware 
+app.use((req, res, next) => {
+  console.log(`Request URL: ${req.url}`);
+  next();
+});
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist', 'index.html')));
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+
   } else {
     app.use(express.static(path.join(__dirname, '../client/public')))
   }
+
+  app.use(routes);
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+  })  
+
 
   //sync sequelize models to the database, then turn on the server
 connection.sync({
