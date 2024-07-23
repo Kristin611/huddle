@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/client/client/dist/assets/',
+  
   //server proxy to prevent cross origin errors 3000 vs 3001
   server: {
     port: 3000,
@@ -18,7 +18,7 @@ export default defineConfig({
     }
   },
   // build: {
-    
+  //   base: '/client/dist/',
   //   outDir: 'client/dist',
   // }
 })
