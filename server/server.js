@@ -31,13 +31,13 @@ app.use(express.json());
 app.use(session(sess));
 
 // logging middleware 
-app.use((req, res, next) => {
-  console.log(`Request URL: ${req.url}`);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(`Request URL: ${req.url}`);
+//   next();
+// });
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/client/dist/assets')));
+    app.use(express.static(path.join(__dirname, '../client/dist')));
 
   } else {
     app.use(express.static(path.join(__dirname, '../client/public')))
@@ -45,9 +45,9 @@ if (process.env.NODE_ENV === 'production') {
 
   app.use(routes);
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'))
-  })  
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+  // })  
 
 
   //sync sequelize models to the database, then turn on the server
