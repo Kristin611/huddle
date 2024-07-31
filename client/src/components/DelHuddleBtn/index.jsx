@@ -3,10 +3,14 @@ import React from 'react';
 const DeleteHuddle = ({ huddle, onDelete }) => {
 
     const handleDeleteHuddleClick = async () => {
+
+        const apiUrl = import.meta.env.VITE_API_URL    
+        
         try {
-            const response = await fetch(`http://localhost:3000/api/huddle/${huddle.id}`, {
+            const response = await fetch(`${apiUrl}/api/huddle/${huddle.id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json'},
+                credentials: 'include'
             })
 
             if (response.ok) {

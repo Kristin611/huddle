@@ -8,11 +8,15 @@ import HuddleList from '../HuddleList';
 const ProfileView = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null); //initialize with null to indicate uninitialized state, i.e., still waiting for the data, which is useful for conditional rendering. Null is a default placeholder for objects that hold data: it indicates that the state is expected to be an object but hasn't been populated yet.
-
+  
   useEffect(() => {
     const fetchUserData = async () => {
+      const apiUrl = import.meta.env.VITE_API_URL
+
       try {
-        const response = await fetch(`http://localhost:3000/api/users/${id}`);
+        const response = await fetch(`${apiUrl}/api/users/${id}`, {
+          credentials: 'include'
+        });
         const userData = await response.json();
 
         console.log('Fetched userData:', userData);

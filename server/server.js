@@ -3,6 +3,7 @@ const express = require('express');
 const routes = require('./routes');
 const path = require('path');
 const session = require('express-session');
+const cors = require('cors')
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -25,6 +26,9 @@ const sess = {
   })
 };
 
+
+
+app.use(cors({origin: 'http://localhost:3000', credentials: true}));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

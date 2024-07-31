@@ -5,11 +5,12 @@ import './MyHuddlesBtn.css';
 const MyHuddles = ({ setHuddle }) => {
     const { id } = useParams();
     //const [huddle, setHuddle] = useState([])
+    const apiUrl = import.meta.env.VITE_API_URL
 
     const handleClick = async () => {
 
         try {
-            const response = await fetch(`http://localhost:3000/api/huddle/user/${id}`);
+            const response = await fetch(`${apiUrl}/api/huddle/user/${id}`);
             const huddleData = await response.json();
 
             if (response.ok) {
