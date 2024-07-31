@@ -18,6 +18,7 @@ const AllHuddles = ({ setHuddle }) => {
             }
         } catch (error) {
             console.error('Error fetching data', error);
+            // error fetching data 
         }
     }
   return (
