@@ -11,8 +11,11 @@ const HuddleList = () => {
 
     useEffect(() => {
         const fetchHuddles = async () => {
+
+            const apiUrl = import.meta.env.VITE_API_URL
+
             try {
-                const response = await axios.get('http://localhost:3000/api/huddle');
+                const response = await axios.get(`${apiUrl}/api/huddle`);
                 console.log('response data:', response)
                 setHuddle(response.data)
 

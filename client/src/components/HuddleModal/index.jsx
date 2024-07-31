@@ -15,6 +15,7 @@ const HuddleModal = ({ isOpen, onClose, user_id }) => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const { id } = useParams();
+    const apiUrl = import.meta.env.VITE_API_URL
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -43,10 +44,11 @@ const HuddleModal = ({ isOpen, onClose, user_id }) => {
         console.log('user ID:', user_id);
 
         try {
-            const response = await fetch('http://localhost:3000/api/huddle', {
+            const response = await fetch(`${apiUrl}/api/huddle`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(payload),
+                credentials: 'include'
             });
 
             // console.log('Full response:', response);

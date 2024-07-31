@@ -5,8 +5,10 @@ const AllHuddles = ({ setHuddle }) => {
 
     const handleClick = async () => {
 
+        const apiUrl = import.meta.env.VITE_API_URL
+
         try {
-            const response = await fetch('http://localhost:3000/api/huddle');
+            const response = await fetch(`${apiUrl}/api/huddle`);
             const huddleData = await response.json();
 
             if (response.ok) {

@@ -10,6 +10,8 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
+    const apiUrl = import.meta.env.VITE_API_URL
+
     // console.log('LoginModal - setIsLoggedIn:', setIsLoggedIn);
 
     const handleUsernameChange = (e) => {
@@ -27,7 +29,7 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
         
 
         try {
-            const response = await fetch('http://localhost:3000/api/users/login', {
+            const response = await fetch(`${apiUrl}/api/users/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ username, password }),
