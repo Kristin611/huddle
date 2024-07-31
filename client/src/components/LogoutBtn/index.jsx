@@ -7,9 +7,10 @@ const LogoutBtn = () => {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
+        const apiUrl = import.meta.env.VITE_API_URL
 
         try {
-            const response = await fetch('http://localhost:3000/api/users/logout', {
+            const response = await fetch(`${apiUrl}/api/users/logout`, {
                 method: 'POST',
                 credentials: 'include',
             });
