@@ -14,7 +14,7 @@ export const Navbar = ({ isLoggedIn }) => {
    <nav className='nav-container'>
     <ul className='navList'>
         <li>
-            <Link to='/'>Home</Link>
+            <Link to='/'>Main</Link>
         </li>
         <li>
             <Link to='/about'>About</Link>
