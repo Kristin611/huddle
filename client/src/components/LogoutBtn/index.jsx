@@ -2,7 +2,7 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import './LogoutBtn.css';
 
-const LogoutBtn = () => {
+const LogoutBtn = ({setIsLoggedIn}) => {
 
     const navigate = useNavigate();
 
@@ -16,7 +16,8 @@ const LogoutBtn = () => {
             });
 
             if (response.status === 204) {
-                console.log('Logout successful!')
+                console.log('Logout successful!');
+                setIsLoggedIn(false);
                 navigate('/');
             } else {
                 const result = await response.json();
