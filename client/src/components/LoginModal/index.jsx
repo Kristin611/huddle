@@ -3,12 +3,14 @@ import Modal from 'react-modal';
 import CreateAcctBtn from '../CreateAcctBtn/index';
 import './LoginModal.css'
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../utils/UserContext';
 
 const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { setUserId } = useUser();
 
     const apiUrl = import.meta.env.VITE_API_URL
 
@@ -43,6 +45,7 @@ const LoginModal = ({ isOpen, onClose, setIsLoggedIn }) => {
                 setUsername('');
                 setPassword('');
                 setIsLoggedIn(true);
+                setUserId(result.user.id); //update userId in context
                 onClose();
                 navigate(`/profile/${result.user.id}`); //navigate to ProfileView with user ID
             } else {
