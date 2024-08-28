@@ -1,0 +1,12 @@
+.dash-btn {
+    background-color: rgb(115, 147, 179, 0);
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+}
+
+.dash-btn:hover {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(139, 160, 182);
+}

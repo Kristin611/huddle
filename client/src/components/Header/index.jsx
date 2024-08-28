@@ -14,16 +14,20 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <>
         <section className='container'>
-              <img className='logoImage' src={huddleLogo} alt='cartoon penguin'/>
               <div>
-                <Dashboard isLoggedIn={isLoggedIn}/>
+                <img className='logoImage' src={huddleLogo} alt='cartoon penguin'/>
               </div>
+              
               <div className='spacer'></div>
+              <div>
+                <Dashboard className='dash' isLoggedIn={isLoggedIn}/>
+              </div>
               {isLoggedIn ? (
                 <LogoutButton setIsLoggedIn={setIsLoggedIn}/> 
               ) : (
                 <LoginButton setIsLoggedIn={setIsLoggedIn}/>
-              )}   
+              )}  
+               
         </section>
     </>
   )

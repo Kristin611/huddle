@@ -10,11 +10,18 @@
     
 }
 
+.dash {
+    margin-left: auto !important; 
+    /* flex-grow: 1; 
+    display: flex;
+    justify-content: flex-end; */
+}
+
 .logoImage {
-    max-width: 10%;
+    max-width: 40%;
     height: auto;
 }
 
-.spacer {
+/* .spacer {
     flex-grow: 1;
-}
+} */

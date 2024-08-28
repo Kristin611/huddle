@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useUser } from '../../utils/UserContext';
+import './MyProfileBtn.css';
 
 const MyProfile = ({ isLoggedIn }) => {
     // const { id } = useParams();
@@ -39,7 +40,7 @@ const MyProfile = ({ isLoggedIn }) => {
   }
   return (
     <>
-        <button onClick={handleClick}>Dashboard</button>
+        <button className='dash-btn' onClick={handleClick}>Dashboard</button>
     </>
   )
 }
