@@ -3,6 +3,7 @@ import './Header.css'
 import huddleLogo from '../../assets/Logo_2.png';
 import LoginButton from '../LoginBtn';
 import LogoutButton from '../LogoutBtn';
+import Dashboard from '../MyProfileBtn';
 
 
 export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -14,6 +15,9 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
     <>
         <section className='container'>
               <img className='logoImage' src={huddleLogo} alt='cartoon penguin'/>
+              <div>
+                <Dashboard isLoggedIn={isLoggedIn}/>
+              </div>
               <div className='spacer'></div>
               {isLoggedIn ? (
                 <LogoutButton setIsLoggedIn={setIsLoggedIn}/> 

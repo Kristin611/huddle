@@ -5,6 +5,7 @@ import App from './App.jsx';
 import Home from './components/Hero';
 import ProfileView from './components/ProfileView/index.jsx';
 import About from './components/About/index.jsx';
+import UserProvider from './utils/UserContext.jsx'
 // import './index.css'
 
 const router = createBrowserRouter([
@@ -29,4 +30,9 @@ const router = createBrowserRouter([
   }
 ])
 
-ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router}/>);
+// UserProvider, which is a custom hook that retreives user data, is available to all the components in application
+ReactDOM.createRoot(document.getElementById('root')).render(
+<UserProvider>
+  <RouterProvider router={router}/>
+</UserProvider>  
+  );

@@ -5,6 +5,7 @@ import HuddleButton from '../CreateHuddleBtn';
 import HuddleList from '../HuddleList';
 
 
+
 const ProfileView = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null); //initialize with null to indicate uninitialized state, i.e., still waiting for the data, which is useful for conditional rendering. Null is a default placeholder for objects that hold data: it indicates that the state is expected to be an object but hasn't been populated yet.
@@ -19,13 +20,13 @@ const ProfileView = () => {
         });
         const userData = await response.json();
 
-        console.log('Fetched userData:', userData);
+        console.log('Fetched userData in ProfileView:', userData);
 
         if (response.ok) {
           setUser(userData); //populate user data
           //console.log('User ID in ProfileView:', userData.id);
         } else {
-          console.error('Failed to fetch user data:', userData.message);
+          console.error('Failed to fetch user data in ProfileView:', userData.message);
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
