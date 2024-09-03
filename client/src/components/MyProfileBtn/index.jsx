@@ -14,6 +14,10 @@ const MyProfile = ({ isLoggedIn }) => {
     // console.log('Error status:', error);
 
   const handleClick = async () => {
+
+    if (!isLoggedIn) {
+      alert('You must sign in to access your dashboard!')
+    }
      
     if (loading) {
       console.log('Loading user data');
@@ -33,9 +37,7 @@ const MyProfile = ({ isLoggedIn }) => {
       console.error('User not logged in or failed to navigate to profile page.')
     }
 
-    if (!isLoggedIn) {
-      alert('You must sign in to access your dashboard!')
-    }
+    
   
   }
   return (
